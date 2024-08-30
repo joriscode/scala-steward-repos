@@ -59,6 +59,8 @@ enum RepoResult(repo: String, branch: Option[String], val isValid: Boolean):
       extends RepoResult(repo, branch = None, isValid = false)
   case Renamed(repo: String)
       extends RepoResult(repo, branch = None, isValid = false)
+  case Failure(repo: String, exception: Throwable)
+      extends RepoResult(repo, branch = None, isValid = false)
 
   override def toString(): String =
     this match
@@ -69,6 +71,7 @@ enum RepoResult(repo: String, branch: Option[String], val isValid: Boolean):
       case Renamed(value)              => s"$repo might be renamed"
       case Inactive(value) => s"$repo is inactive for last $inactiveYears"
       case Correct(_)      => s"$repo:$branch (OK)"
+      case Failure(_, e)   => s" Failed to query $repo -> ${e.getMessage()}"
 
 /** Potential improvements:
   *   - find active repositories with no opened Scala Steward PRs (potential
@@ -121,7 +124,9 @@ def main(
 
     val hasStewardRequests =
       gh.searchIssues()
-        .q(s"repo:${repoEntry.repo} type:pr author:scala-steward created:$lastMonth")
+        .q(
+          s"repo:${repoEntry.repo} type:pr author:scala-steward created:$lastMonth"
+        )
         .list()
         .withPageSize(1)
         .iterator()
@@ -165,11 +170,17 @@ def main(
                         if http.getMessage().contains(renamedMessage) =>
                       RepoResult.Renamed(repoEntry.repo)
                     case _ =>
-                      scribe.error(s"Unexpeected error when querying ${repoEntry.repo}", exception)
-                      throw exception
+                      scribe.error(
+                        s"Unexpeected error when querying ${repoEntry.repo}",
+                        exception
+                      )
+                      RepoResult.Failure(repoEntry.repo, exception)
                 case Failure(exception) =>
-                      scribe.error(s"Unexpeected error when querying ${repoEntry.repo}", exception)
-                      throw exception
+                  scribe.error(
+                    s"Unexpeected error when querying ${repoEntry.repo}",
+                    exception
+                  )
+                  RepoResult.Failure(repoEntry.repo, exception)
                 case Success(value) => value
             }
         }
