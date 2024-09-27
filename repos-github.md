@@ -563,6 +563,7 @@
 - lowmelvin/formify-scala
 - lowmelvin/hammer-scala
 - lowmelvin/scala-json-schema
+- lowmelvin/mini-task
 - LPTK/simple-sub
 - lqhuang/watcher
 - lsug/lsug-website
