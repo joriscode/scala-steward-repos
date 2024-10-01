@@ -240,10 +240,10 @@
 - dieproht/molly
 - dimitarg/weaver-test-extra
 - disneystreaming/alloy
+- disneystreaming/aws-sdk-smithy-specs
 - disneystreaming/smithy4s
 - disneystreaming/smithy4s.g8
 - disneystreaming/smithy-translate
-- disneystreaming/weaver-test
 - dispalt/tagless-redux
 - domino-osgi/domino-java
 - doriordan/skuber
