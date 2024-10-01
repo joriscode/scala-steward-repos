@@ -410,6 +410,7 @@
 - INCATools/relation-graph
 - INCATools/whelk
 - informalsystems/apalache
+- ing-bank/baker
 - inoio/solrs
 - intracer/scalawiki
 - iRevive/fmq
@@ -1252,4 +1253,3 @@
 - ZookLabs/zooklabs
 - zouzias/spark-hello-world
 - zouzias/spark-lucenerdd
-- ing-bank/baker
