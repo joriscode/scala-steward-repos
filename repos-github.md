@@ -1252,3 +1252,4 @@
 - ZookLabs/zooklabs
 - zouzias/spark-hello-world
 - zouzias/spark-lucenerdd
+- ing-bank/baker
