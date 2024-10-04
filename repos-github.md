@@ -338,6 +338,8 @@
 - felher/sainte-lague
 - finagle/finagle-mysql-shapes
 - finagle/finch
+- finos/morphir
+- finos/morphir-jvm
 - finos/morphir-scala
 - firstbirdtech/akka-persistence-query-view
 - firstbirdtech/akka-persistent-scheduler
