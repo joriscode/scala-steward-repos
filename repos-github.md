@@ -532,7 +532,6 @@
 - leigh-perry/metamorphosis
 - lemastero/scala_typeclassopedia
 - lemastero/Triglav
-- lemonlabsuk/scala-uri
 - lensesio/stream-reactor
 - leobenkel/Laeta
 - leobenkel/Soteria
