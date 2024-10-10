@@ -88,6 +88,7 @@
 - avdv/play-json-refined
 - avdv/scalals
 - AVSystem/scala-commons
+- AVSystem/scex
 - azavea/franklin
 - azhur/kafka-serde-scala
 - balhoff/arachne
