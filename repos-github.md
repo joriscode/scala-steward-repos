@@ -813,6 +813,7 @@
 - quafadas/dedav4s
 - quafadas/scautable
 - raboof/sbt-reproducible-builds
+- Ragazoor/typed-future
 - rayrobdod/string-context-parser-combinator
 - rcmartins/blinky
 - reactific/riddl
