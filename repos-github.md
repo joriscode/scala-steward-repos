@@ -905,6 +905,7 @@
 - sbt/sbt-paradox-material-theme
 - sbt/sbt-pull-request-validator
 - sbt/sbt-rjs
+- sbt/sbt-sbom
 - sbt/sbt-stylus
 - sbt/sbt-uglify
 - sbt/sbt-unidoc
