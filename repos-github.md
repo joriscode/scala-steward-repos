@@ -721,7 +721,6 @@
 - Philippus/scala-isbn
 - Philippus/zio-pekko-cluster
 - Philippus/zio-pekko-cluster:series/1.x
-- pitgull/pitgull
 - pityka/lamp
 - pityka/nspl
 - pityka/pairwisealignment
