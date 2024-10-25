@@ -797,7 +797,6 @@
 - plokhotnyuk/rtree2d
 - pme123/camundala
 - polyvariant/better-tostring
-- polyvariant/caliban-gitlab
 - polyvariant/colorize-scala
 - polyvariant/sttp-oauth2
 - ppurang/abctemplates
