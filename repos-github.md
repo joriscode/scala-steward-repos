@@ -721,7 +721,6 @@
 - Philippus/scala-isbn
 - Philippus/zio-pekko-cluster
 - Philippus/zio-pekko-cluster:series/1.x
-- pitgull/pitgull
 - pityka/lamp
 - pityka/nspl
 - pityka/pairwisealignment
@@ -797,7 +796,6 @@
 - plokhotnyuk/rtree2d
 - pme123/camundala
 - polyvariant/better-tostring
-- polyvariant/caliban-gitlab
 - polyvariant/colorize-scala
 - polyvariant/sttp-oauth2
 - ppurang/abctemplates
