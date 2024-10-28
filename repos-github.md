@@ -910,6 +910,7 @@
 - sbt/sbt-web
 - sbt/sbt-web-build-base
 - sbt/zinc
+- sbt/setup-sbt
 - ScalablyTyped/Converter
 - ScalaConsultants/mesmer-akka-agent
 - ScalaConsultants/zio-akka-quickstart.g8
