@@ -992,9 +992,8 @@
 - ShiftLeftSecurity/js2cpg
 - ShiftLeftSecurity/sbt-ci-release-early
 - shopstic/chopsticks
+- sideeffffect/liquibase-doobie
 - sideeffffect/sbt-decent-scala
-- sideeffffect/zio-doobie
-- sideeffffect/zio-io
 - sideeffffect/zio-testcontainers
 - sirgraystar/mandyville-modelling
 - siriusxm/snapshot4s
