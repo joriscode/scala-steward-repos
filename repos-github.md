@@ -270,6 +270,7 @@
 - eikek/yamusca
 - ekrich/sblas
 - ekrich/sblas.g8
+- ekrich/scala-unicode
 - ekrich/sconfig
 - ekrich/sjavatime
 - ekrich/stensorflow
