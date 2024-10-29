@@ -70,7 +70,6 @@
 - asachdeva/fpinsscala
 - asachdeva/zio_launch
 - atnos-org/eff
-- atnos-org/origami
 - Atry/fastring
 - Atry/FutureBinding.scala
 - Atry/JsPromiseBinding.scala
@@ -112,9 +111,6 @@
 - bitlap/zim
 - bitmarck-service/base32check-java
 - bitmarck-service/base32check-scala
-- bitrockteam/kafka-dvs-api
-- bitrockteam/kafka-dvs-aviation-edge-producer
-- bitrockteam/kafka-dvs-streams
 - bkirwi/decline
 - blackdoor/jose
 - blemale/scaffeine
@@ -204,7 +200,6 @@
 - coursier/coursier-channel.g8
 - coursier/dependency
 - coursier/echo
-- coursier/http-server
 - coursier/interface
 - coursier/jni-utils
 - coursier/publish
@@ -386,7 +381,6 @@
 - guardrail-dev/guardrail-maven-plugin
 - guardrail-dev/guardrail-sample-gradle-springmvc
 - guardrail-dev/guardrail-sample-http4s
-- guardrail-dev/guardrail-sample-maven-dropwizard
 - guardrail-dev/guardrail-sample-sbt-akkahttp
 - guardrail-dev/sbt-guardrail
 - gumdrop/quizleague
@@ -432,13 +426,9 @@
 - jamesward/zio-mavencentral
 - janstenpickle/graal-kafka-client
 - janstenpickle/hotswap-ref
-- japgolly/clear-config
-- japgolly/microlibs-scala
-- japgolly/nyaya
 - japgolly/scalajs-react
 - japgolly/scala-graal
 - japgolly/test-state
-- japgolly/univeq
 - jatcwang/difflicious
 - jatcwang/scalafix-named-params
 - jchapuis/fs2-kafka-mock
@@ -461,14 +451,12 @@
 - johnynek/bosatsu
 - jpbnetley/Mongo-csv-importer
 - justapagamentos/playframework-core
-- justinhj/fp-starter-pack.g8
 - jwojnowski/fs2-aes
 - jwojnowski/humanoid
 - jwojnowski/oidc4s
 - jwojnowski/scuid
 - jwt-scala/jwt-scala
 - jxnu-liguobin/scala-macro-tools
-- kailuowang/henkan
 - kailuowang/mau
 - kailuowang/sbt-catalysts
 - kaizen-solutions/virgil
@@ -485,7 +473,6 @@
 - KelkooGroup/theGardener
 - keuhdall/otel4s-grafana-example
 - Khalian/Modulo12
-- kiendang/sbt-scalapy
 - kierendavies/mill-explicit-deps
 - kierendavies/skunk-migrate
 - kinoplan/scalajs-react-material-ui
@@ -498,7 +485,6 @@
 - kmizu/jsonda
 - kmizu/matlike
 - kontainers/PureCSV
-- kostjas/spark-google-spreadsheets
 - kovstas/fs2-throttler
 - kovszilard/twitter-server-prometheus
 - kubukoz/smithy-playground
@@ -575,7 +561,6 @@
 - lucproglangcourse/primenumbers-http4s-scala
 - m2-oss/calypso
 - macro-peg/macro_peg
-- majk-p/identicon4s
 - makiftutuncu/e
 - manocha-aman/wind-alerts
 - mariohuizar/stream-detector:develop
@@ -618,7 +603,6 @@
 - msgpack/msgpack-java
 - mukhtar1227ali/Poker_2
 - mvillafuertem/scala
-- mvillafuertem/scalajs-react-world
 - mvillafuertem/scalcite
 - nachinius/fp-scala-template
 - nachinius/starter.g8
@@ -651,12 +635,10 @@
 - nigeleke/flac4s:develop
 - nigeleke/life:develop
 - nigeleke/ohmic:develop
-- nigeleke/sbt-rust:develop
 - nigeleke/scala-seed.g8
 - nikitaDanilenko/foodie
 - niklasf/lila-openingexplorer
 - nikolaiser/biser
-- niqdev/scala-fp
 - nivanov/cosplay
 - nixiesearch/nixiesearch
 - nMoncho/helenus
@@ -666,7 +648,6 @@
 - note/dhallj-magnolia
 - novakov-alexey/http4s-spnego
 - novakov-alexey/krb-operator2
-- nrinaudo/kantan.csv
 - nrktkt/ninny-json
 - nryanov/consul4s
 - NthPortal/extra-predef
@@ -700,7 +681,6 @@
 - phelps-sg/play-hmac-signatures
 - phenoscape/owlery
 - phenoscape/owlet
-- phenoscape/phenoscape-kb-services
 - phenoscape/phenoscape-kb-web-ui
 - Philippus/akka-http-testkit-munit
 - Philippus/baggage-jwt
@@ -724,7 +704,6 @@
 - Philippus/zio-pekko-cluster:series/1.x
 - pityka/lamp
 - pityka/nspl
-- pityka/pairwisealignment
 - pityka/saddle
 - pityka/selfpackage
 - pityka/tasks
@@ -797,14 +776,12 @@
 - plokhotnyuk/rtree2d
 - pme123/camundala
 - polyvariant/better-tostring
-- polyvariant/colorize-scala
 - polyvariant/sttp-oauth2
 - ppurang/abctemplates
 - ppurang/asynch
 - precog/fs2-ssh
 - precog/sbt-precog
 - profunktor/fs2-rabbit
-- prom3th3us/zio-actors-cassandra-journal
 - proteinevolution/Toolkit
 - pstutz/syncodia
 - pureconfig/pureconfig
@@ -861,7 +838,6 @@
 - sangria-graphql/sangria-circe
 - sangria-graphql/sangria-federated
 - sangria-graphql/sangria-ion
-- sangria-graphql/sangria-jackson
 - sangria-graphql/sangria-json4s-jackson
 - sangria-graphql/sangria-json4s-native
 - sangria-graphql/sangria-marshalling-api
@@ -889,7 +865,6 @@
 - sbt/sbt-gzip
 - sbt/sbt-header
 - sbt/sbt-jacoco
-- sbt/sbt-java-formatter
 - sbt/sbt-jni
 - sbt/sbt-jshint
 - sbt/sbt-js-engine
@@ -919,7 +894,6 @@
 - ScalaConsultants/zio-quickstart.g8
 - ScalaConsultants/zio-slick-interop
 - scalalandio/chimney
-- scalapb/common-protos
 - scalapb/protobuf-scala-runtime
 - scalapb/protoc-bridge
 - scalapb/ScalaPB
@@ -985,7 +959,6 @@
 - senia-psm/zio-test-akka-http
 - sentenza/cats-http4s-crypto
 - sentenza/hacktoberfest-scala-algorithms
-- sentenza/PureCSV
 - SethTisue/adventofcode
 - SethTisue/Project-Euler
 - shadaj/scalapy
@@ -1033,7 +1006,6 @@
 - stryker-mutator/stryker4s
 - stryker-mutator/weapon-regex
 - StuartApp/zcaffeine
-- sullis/java-scala-interop-examples
 - sullis/jms-testkit
 - sullis/scala-hello-world-app
 - suzaku-io/boopickle
@@ -1061,9 +1033,6 @@
 - takapi327/ldbc
 - tanishiking/semanticdb-for-scala3
 - teamclairvoyant/restonomer:staging
-- TeamWanari/sbt-paradox-diagrams
-- TeamWanari/tutelar
-- tegonal/workflow-helper
 - tersesystems/blindsight
 - testcontainers/testcontainers-scala
 - tethys-json/tethys
@@ -1097,8 +1066,6 @@
 - tkrs/orcus
 - tminglei/slick-pg
 - TobiasRoland/scala-xml-encoder
-- topl/bifrost:dev
-- topl/BramblSc:main
 - ToToTec/CmdOption
 - tototoshi/slick-joda-mapper
 - tpolecat/doobie
@@ -1197,7 +1164,6 @@
 - weso/shacl-s
 - weso/shex-s
 - weso/srdf
-- weso/utils
 - windymelt/ak4-lambda
 - windymelt/cdp-scala
 - windymelt/zmm

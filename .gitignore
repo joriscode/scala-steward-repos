@@ -1,0 +1,4 @@
+.metals/
+.backup/
+.bsp/
+.scala-build/
