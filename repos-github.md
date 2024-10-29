@@ -909,8 +909,8 @@
 - sbt/sbt-unidoc
 - sbt/sbt-web
 - sbt/sbt-web-build-base
-- sbt/zinc
 - sbt/setup-sbt
+- sbt/zinc
 - ScalablyTyped/Converter
 - ScalaConsultants/mesmer-akka-agent
 - ScalaConsultants/zio-akka-quickstart.g8
