@@ -1,4 +1,4 @@
-//> using dep org.kohsuke:github-api:1.324
+//> using dep org.kohsuke:github-api:1.326
 //> using dep com.lihaoyi::pprint::0.9.0
 //> using dep ch.epfl.lamp::gears::0.2.0
 //> using dep com.outr::scribe::3.15.0
@@ -27,6 +27,7 @@ import org.kohsuke.github.GHException
 import org.kohsuke.github.HttpException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.nio.file.StandardOpenOption
 
 val inactiveYears = 2
 val inactiveDateCutoff =
@@ -38,6 +39,10 @@ val lastMonth =
   val date = LocalDate.now().minusDays(30)
   ">" + date.format(DateTimeFormatter.ISO_LOCAL_DATE)
 
+val today =
+  val date = LocalDate.now()
+  date.format(DateTimeFormatter.ISO_LOCAL_DATE)
+
 val renamedMessage =
   "The listed users and repositories cannot be searched either because the resources do not exist or you do not have permission to view them."
 
@@ -46,18 +51,24 @@ case class RepoEntry(repo: String, branch: Option[String]):
     case RepoEntry(repo, Some(branch)) => s"$repo:$branch"
     case RepoEntry(repo, None)         => repo
 
-enum RepoResult(repo: String, branch: Option[String], val isValid: Boolean):
-  case Invalid(repo: String, branch: Option[String])
+enum RepoResult(
+    val repo: String,
+    val branch: Option[String],
+    val isValid: Boolean
+):
+  case Invalid(override val repo: String, override val branch: Option[String])
       extends RepoResult(repo, branch, isValid = false)
-  case Archived(repo: String)
+  case Archived(override val repo: String)
       extends RepoResult(repo, branch = None, isValid = false)
   case Correct(entry: RepoEntry)
       extends RepoResult(entry.repo, entry.branch, isValid = true)
-  case Inactive(repo: String)
+  case Inactive(override val repo: String)
       extends RepoResult(repo, branch = None, isValid = false)
-  case Stale(repo: String)
+  case Stale(override val repo: String)
       extends RepoResult(repo, branch = None, isValid = false)
-  case Renamed(repo: String)
+  case Renamed(override val repo: String)
+      extends RepoResult(repo, branch = None, isValid = false)
+  case Failure(override val repo: String, exception: Throwable)
       extends RepoResult(repo, branch = None, isValid = false)
 
   override def toString(): String =
@@ -69,6 +80,7 @@ enum RepoResult(repo: String, branch: Option[String], val isValid: Boolean):
       case Renamed(value)              => s"$repo might be renamed"
       case Inactive(value) => s"$repo is inactive for last $inactiveYears"
       case Correct(_)      => s"$repo:$branch (OK)"
+      case Failure(_, e)   => s" Failed to query $repo -> ${e.getMessage()}"
 
 /** Potential improvements:
   *   - find active repositories with no opened Scala Steward PRs (potential
@@ -81,6 +93,16 @@ def main(
     githubToken: String
 ) =
   val reposGihub = os.pwd / "repos-github.md"
+
+  val alreadyCheckedPath = os.pwd / ".backup" / (today + ".txt")
+  val alreadyChecked =
+    if (os.exists(alreadyCheckedPath))
+      os.read(alreadyCheckedPath).linesIterator.map(_.split(" ").head).toSet
+    else Set()
+  val gh = new GitHubBuilder()
+    .withOAuthToken(githubToken)
+    .build()
+
   val repos = os
     .read(reposGihub)
     .split("\n")
@@ -92,9 +114,11 @@ def main(
         case _                   => None
 
     }
-  val gh = new GitHubBuilder()
-    .withOAuthToken(githubToken)
-    .build()
+    .filter {
+      case RepoEntry(repo, None) => !alreadyChecked.contains(repo)
+      case RepoEntry(repo, Some(branch)) =>
+        !alreadyChecked.contains(repo + ":" + branch)
+    }
 
   def wrongBranch(ghRepo: GHRepository, repoEntry: RepoEntry) =
     repoEntry match
@@ -121,7 +145,9 @@ def main(
 
     val hasStewardRequests =
       gh.searchIssues()
-        .q(s"repo:${repoEntry.repo} type:pr author:scala-steward created:$lastMonth")
+        .q(
+          s"repo:${repoEntry.repo} type:pr author:scala-steward created:$lastMonth"
+        )
         .list()
         .withPageSize(1)
         .iterator()
@@ -131,7 +157,7 @@ def main(
     else Some(RepoResult.Stale(repoEntry.repo))
 
   Async.blocking:
-    val nonExistent = repos
+    val allRepoResults = repos
       .grouped(5)
       .flatMap { repos =>
         repos.map { repoEntry =>
@@ -144,7 +170,7 @@ def main(
                 wrongBranch(ghRepo, repoEntry)
                   .orElse(archived(ghRepo, repoEntry))
                   .orElse(isInactive(ghRepo, repoEntry))
-                  .orElse(noScalaStewardActivity(ghRepo, repoEntry))
+                  // .orElse(noScalaStewardActivity(ghRepo, repoEntry))
                   .getOrElse(RepoResult.Correct(repoEntry))
               case _ => RepoResult.Correct(repoEntry)
 
@@ -152,9 +178,9 @@ def main(
             .withMaximumFailures(5)
             .withDelay(
               Delay.backoff(
-                maximum = 5.minutes,
+                maximum = 2.minutes,
                 starting = 10.seconds,
-                multiplier = 4,
+                multiplier = 2,
                 jitter = Jitter.equal
               )
             ) {
@@ -165,19 +191,41 @@ def main(
                         if http.getMessage().contains(renamedMessage) =>
                       RepoResult.Renamed(repoEntry.repo)
                     case _ =>
-                      scribe.error(s"Unexpeected error when querying ${repoEntry.repo}", exception)
-                      throw exception
+                      scribe.error(
+                        s"Unexpeected error when querying ${repoEntry.repo}",
+                        exception
+                      )
+                      RepoResult.Failure(repoEntry.repo, exception)
                 case Failure(exception) =>
-                      scribe.error(s"Unexpeected error when querying ${repoEntry.repo}", exception)
-                      throw exception
+                  scribe.error(
+                    s"Unexpeected error when querying ${repoEntry.repo}",
+                    exception
+                  )
+                  RepoResult.Failure(repoEntry.repo, exception)
                 case Success(value) => value
             }
         }
       }
-      .filter(!_.isValid)
       .toList
 
-    if nonExistent.nonEmpty then
-      println(s"\nIdentified problems with ${nonExistent.length} repositories:")
-      nonExistent.foreach: repo =>
+    val backup = allRepoResults
+      .map { repoResult =>
+        repoResult.repo + repoResult.branch.mkString(
+          ":",
+          "",
+          ""
+        ) + s" https://github.com/$repoResult"
+      }
+      .mkString("\n")
+    os.write.append(
+      alreadyCheckedPath,
+      backup,
+      createFolders = true
+    )
+    val identifiedProblems =
+      allRepoResults.filter(!_.isValid)
+
+    if identifiedProblems.nonEmpty then
+      println(s"\nIdentified problems with ${identifiedProblems.length} repositories:")
+      identifiedProblems.foreach: repo =>
         println(s" - https://github.com/$repo")
