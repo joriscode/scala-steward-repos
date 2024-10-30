@@ -36,7 +36,7 @@ val inactiveDateCutoff =
   date
 
 val lastMonth =
-  val date = LocalDate.now().minusDays(30)
+  val date = LocalDate.now().minusDays(60)
   ">" + date.format(DateTimeFormatter.ISO_LOCAL_DATE)
 
 val today =
@@ -79,7 +79,7 @@ enum RepoResult(
       case Archived(value)             => s"$repo is archived"
       case Renamed(value)              => s"$repo might be renamed"
       case Inactive(value) => s"$repo is inactive for last $inactiveYears"
-      case Correct(_)      => s"$repo:$branch (OK)"
+      case Correct(repo)      => s"$repo (OK)"
       case Failure(_, e)   => s" Failed to query $repo -> ${e.getMessage()}"
 
 /** Potential improvements:
@@ -97,7 +97,7 @@ def main(
   val alreadyCheckedPath = os.pwd / ".backup" / (today + ".txt")
   val alreadyChecked =
     if (os.exists(alreadyCheckedPath))
-      os.read(alreadyCheckedPath).linesIterator.map(_.split(" ").head).toSet
+      os.read(alreadyCheckedPath).linesIterator.filter(_.nonEmpty).map(_.split(" ").head.stripSuffix(":")).toSet
     else Set()
   val gh = new GitHubBuilder()
     .withOAuthToken(githubToken)
@@ -170,7 +170,7 @@ def main(
                 wrongBranch(ghRepo, repoEntry)
                   .orElse(archived(ghRepo, repoEntry))
                   .orElse(isInactive(ghRepo, repoEntry))
-                  // .orElse(noScalaStewardActivity(ghRepo, repoEntry))
+                  .orElse(noScalaStewardActivity(ghRepo, repoEntry))
                   .getOrElse(RepoResult.Correct(repoEntry))
               case _ => RepoResult.Correct(repoEntry)
 
@@ -216,7 +216,7 @@ def main(
           ""
         ) + s" https://github.com/$repoResult"
       }
-      .mkString("\n")
+      .mkString("", "\n", "\n")
     os.write.append(
       alreadyCheckedPath,
       backup,
