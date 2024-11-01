@@ -858,6 +858,7 @@
 - sangria-graphql/sangria-streaming-api
 - sangria-graphql/sangria-subscriptions-example
 - sbt-dao-generator/sbt-dao-generator
+- sbt/io
 - sbt/sbt-autoversion
 - sbt/sbt-avro
 - sbt/sbt-boilerplate
@@ -892,7 +893,6 @@
 - sbt/sbt-web
 - sbt/sbt-web-build-base
 - sbt/setup-sbt
-- sbt/io
 - sbt/zinc
 - ScalablyTyped/Converter
 - ScalaConsultants/mesmer
