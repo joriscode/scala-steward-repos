@@ -892,6 +892,7 @@
 - sbt/sbt-web
 - sbt/sbt-web-build-base
 - sbt/setup-sbt
+- sbt/io
 - sbt/zinc
 - ScalablyTyped/Converter
 - ScalaConsultants/mesmer
