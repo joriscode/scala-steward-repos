@@ -90,10 +90,12 @@
 - azavea/franklin
 - azhur/kafka-serde-scala
 - balhoff/arachne
+- balhoff/archimedes
 - balhoff/blazegraph-runner
 - balhoff/materializer
 - balhoff/owl-diff
 - balhoff/owl-to-rules
+- balhoff/whelk-web
 - bazeltools/bsp4bazel
 - bbarker/diz
 - bcarter97/id-generator
