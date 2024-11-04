@@ -859,6 +859,7 @@
 - sangria-graphql/sangria-subscriptions-example
 - sbt-dao-generator/sbt-dao-generator
 - sbt/io
+- sbt/librarymanagement
 - sbt/sbt-autoversion
 - sbt/sbt-avro
 - sbt/sbt-boilerplate
