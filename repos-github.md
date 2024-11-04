@@ -1135,7 +1135,6 @@
 - VirtusLab/ide-probe
 - VirtusLab/java-class-name
 - VirtusLab/lightweight-spark-distrib
-- VirtusLab/no-crc32-zip-input-stream
 - VirtusLab/pekko-serialization-helper
 - VirtusLab/scalafmt-native-image
 - VirtusLab/scala-cli
