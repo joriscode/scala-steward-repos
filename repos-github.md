@@ -717,10 +717,10 @@
 - pityka/utils-string
 - pjfanning/micrometer-pekko
 - pjfanning/pekko-http-json
-- PlasmaLaboratories/plasma-node
-- PlasmaLaboratories/plasma-sdk-scala
 - PlasmaLaboratories/plasma-btc-bridge
 - PlasmaLaboratories/plasma-cli
+- PlasmaLaboratories/plasma-node
+- PlasmaLaboratories/plasma-sdk-scala
 - playalot/ReactiveMongo-Extensions
 - playframework/.github
 - playframework/anorm
