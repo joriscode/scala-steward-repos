@@ -703,6 +703,7 @@
 - Philippus/pureconfig-javanet
 - Philippus/sbt-dotenv
 - Philippus/sbt-license-check
+- Philippus/sbt-jackson-version-check
 - Philippus/sbt-pekko-version-check
 - Philippus/scala-for-all
 - Philippus/scala-isbn
