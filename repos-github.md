@@ -864,6 +864,7 @@
 - sangria-graphql/sangria-streaming-api
 - sangria-graphql/sangria-subscriptions-example
 - sbt-dao-generator/sbt-dao-generator
+- sbt/flyway-sbt
 - sbt/io
 - sbt/librarymanagement
 - sbt/sbt-autoversion
