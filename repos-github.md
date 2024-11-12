@@ -977,7 +977,6 @@
 - SethTisue/Project-Euler
 - shadaj/slinky
 - ShiftLeftSecurity/codepropertygraph
-- ShiftLeftSecurity/js2cpg
 - ShiftLeftSecurity/sbt-ci-release-early
 - shopstic/chopsticks
 - sideeffffect/liquibase-doobie
