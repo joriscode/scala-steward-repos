@@ -951,6 +951,7 @@
 - scala/scala-parallel-collections
 - scala/scala-parser-combinators
 - scala/scala-seed.g8
+- scala/scala-swing
 - scala/scala-xml
 - scala/scala:2.12.x
 - scanamo/scanamo
