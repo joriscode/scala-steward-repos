@@ -454,6 +454,7 @@
 - johanandren/sbt-akka-version-check
 - johnspade/csv3s
 - johnynek/bosatsu
+- joriscode/kantan.codecs
 - jpbnetley/Mongo-csv-importer
 - jvican/dijon
 - jwojnowski/fs2-aes
