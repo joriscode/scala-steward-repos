@@ -822,6 +822,7 @@
 - rintcius/scala-steward-ping
 - rlemaitre/pillars
 - rolang/dumbo
+- rosvit/swim-report
 - routis/dmmf-scala
 - rtimush/sbt-rewarn
 - rtimush/sbt-updates
